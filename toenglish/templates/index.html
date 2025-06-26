@@ -1,0 +1,375 @@
+
+{% extends "main.html" %}
+{% load static %}
+
+{% block content%}
+
+    <section class="home">
+        <header class="header">
+            <nav class="nav">
+            <i id="openMenu" class="bi bi-list"></i>
+            <h2 class="site-name">ItEnglish</h2>
+            <i id='search' class="bi bi-search"></i>
+            </nav>
+            
+            <ul id="menu" class="menu">
+                
+                <a class="list-item" href="{% url 'home'%}"><li onclick="beCurent(this)" class="list-item">home</li></a>
+                <a class="list-item" href="#contact-us"><li onclick="beCurent(this)" class="list-item">contact us</li></a>
+                <a class="list-item" href="#"><li onclick="beCurent(this)" >lessons</li></a>
+                <a class="list-item" href="/speaking/?section=conversations"><li onclick="beCurent(this)" class="list-item"><h5 class="list-item">conversations</h5></li></a>
+               <a class="list-item" href="/speaking/?section=vocabulary"> <li onclick="beCurent(this)" class="list-item"><h5 class="list-item">vocabulary</h5></li></a>
+               <a class="list-item" href="/speaking/?section=stories"> <li onclick="beCurent(this)" class="list-item"><h5 class="list-item">stories</h5></li></a>
+               <a class="list-item" href="{% url 'adj'%}"> <li onclick="beCurent(this)" class="list-item"><h5 class="list-item">Adjectives</h5></li></a>
+               <a class="list-item" href="{% url 'usefulse'%}"> <li onclick="beCurent(this)" class="list-item"><h5 class="list-item">Useful sentences </h5></li></a>
+               <a class="list-item" href="{% url 'slang'%}"> <li onclick="beCurent(this)" class="list-item"><h5 class="list-item">slang</h5></li></a>
+               <a class="list-item" href="{% url 'phver'%}"> <li onclick="beCurent(this)" class="list-item"><h5 class="list-item">phrasal verbs</h5></li></a>
+            </ul>
+
+
+            
+        </header>
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                <a href="/speaking/?section=conversations" class=" swiper-slide">
+                    <img src="{% static 'assets/img/hero-bg.jpg'%}" alt="" class="swiper-image">
+                    <p class="hero-text">
+                         over 300 conversation
+                    </p>
+                </a>
+                <a href="/speaking/?section=stories" class=" swiper-slide">
+                    <img src="{% static 'assets/img/about.jpg'%}" alt="" class="swiper-image">
+                    <p class="hero-text">
+                        new stories
+                    </p>
+                </a>
+                <a href="/speaking/?section=vocabulary" class=" swiper-slide">
+                    <img src="{% static 'assets/img/hero-bg.jpg'%}" alt="" class="swiper-image">
+                    <p class="hero-text">
+                        the most known vocabulary
+                    </p>
+                </a>
+            </div>
+            <div class="controls">
+                <div class="swiper-button-prev swiper-controls"></div>
+                <div class="swiper-button-next swiper-controls"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    <div class="hero">
+        <div class="des">
+            <p class="d35-73x7">
+                Wellcome to ItEnglish
+            </p>
+            <h4 class="ni-t">
+                contintue with our
+            </h4>
+        </div>
+        <div class="hero-des">
+            <h3 class="mini-text">new lessons </h3>
+            <hr class="line-break">
+            <h3 class="h-text">discover it </h3>
+            
+        </div>
+        
+
+<div class="cards-co">
+    <div class="image-container">
+        <div  class="box">
+            <img src="{% static 'img/image1.jpg'%}" alt="" />
+            <a href="{% url 'slang'%}"   class="card-info">
+                <h3 class="lesson-name">phrasal verbs</h3>
+                <div class="go-to-it">
+                    <span class="n-lessons">+39</span>
+                </div>
+            </a>
+        </div>
+        <div class="box">
+            <img src="{% static 'img/image2.jpg'%}" alt="" />
+            <a href="{% url 'adj'%}" class="card-info">
+                <h3 class="lesson-name">slang</h3>
+                <div class="go-to-it">
+                    <span class="n-lessons">+39</span>
+                </div>
+            </a>
+        </div>
+        <div  class="box">
+            <img src="{% static 'img/image3.jpg'%}" alt="" />
+            <a href="{% url 'usefulse'%}"  class="card-info">
+                <h3 class="lesson-name">Adjectives</h3>
+                <div class="go-to-it">
+                    <span class="n-lessons">+39</span>
+                </div>
+            </a>
+        </div>
+        <div  class="box">
+            <img src="{% static 'img/image2.jpg'%}" alt="" />
+            <a href="{% url 'phver'%}"  class="card-info">
+                <h3 class="lesson-name">Useful sentences</h3>
+                <div class="go-to-it">
+                    <span class="n-lessons">+39</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+
+   
+</section>
+
+    <section class="services">
+        <div class="hero-des">
+        <h3 class="mini-text">Services </h3>
+        <hr class="line-break">
+        <h3 style="color:rgba(0,0,0,.855);" class="h-text ">Check our services</h3>
+        </div>
+        <div class="service">
+            <div class="icon-c">
+                <i></i>
+            </div>
+            <div class="se-info">
+                <p class="info">
+                    conversations with voice
+                </p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="icon-c">
+                <i></i>
+            </div>
+            <div class="se-info">
+                <p class="info">
+                    vocabulary about various fields
+                </p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="icon-c">
+                <i  class=""></i>
+            </div>
+            <div class="se-info">
+                <p class="info">
+                    doing tests
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="lessons-h">
+    <div class="hero-des">
+    <h3 class="mini-text">lessons </h3>
+    <hr  class="line-break">
+    
+    <h3 style="color:rgba(0,0,0,.855);" class="h-text ">all you want </h3>
+    </div>
+    <div class="shop-h">
+        {% for blog in blogs %}
+        <div class="lesson-c">
+            <h3 class="lesson-name-h">{{blog.title}}-{{blog.title_arabic}}</h3>
+            <div class="lesson">
+            
+            
+            <img  src="{{blog.ImageURL}}" alt="" class="lesson-img">
+            <div class="lesson-info">
+                <div class="p-info b">
+                    <a href="{{blog.get_absolute_url}}">
+                    <i class="bi bi-play info-btn"></i>
+                    </a>
+                    <i  class="bi bi-heart"></i>
+                    
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+        
+        {% include "pagination.html" with page=blogs %}
+
+        
+    </div>
+</section>
+
+    <section class="speacial">
+        <div class="hero-des">
+    <h3 class="mini-text">lessons </h3>
+    <hr  class="line-break">
+    
+    <h3 style="color:rgba(0,0,0,.855);" class="h-text ">all you want </h3>
+    </div>
+
+        <div class="speacial-controlls">
+            <h3 onclick="Curent(this)" class="speacial-btn curent active" id="conversationsBtn">conversations</h3>
+            <h3 onclick="Curent(this)" class="speacial-btn" id="vocabulariesBtn">vocabularies</h3>
+            <h3 onclick="Curent(this)" class="speacial-btn" id="storiesBtn">stories</h3>
+        </div>
+        
+        <div class="speacial-content active " id="conversations">
+            {% for conversation in conversations|slice:":10" %}
+            <div class="speacial-lesson">
+                <img src="{{conversation.ImageURL}}" alt="" class="speacial-lesson-img">
+                <div class="speacial-lesson-info">
+                            <h3 class="name">{{conversation.title|slice:":15"}} - {{conversation.title_arabic|slice:":15" }}</h3>
+                            <h5 class="category">conversations</h5>
+                </div>
+
+            </div>
+            {% endfor %}
+            <a href="/speaking/?section=conversations" class="see-more">
+                <span>See more</span><i class="">›</i>
+            </a>
+        </div>
+        
+        <div class="speacial-content " id="vocabularies">
+            {% for vocabulary in vocabularies|slice:":10"%}
+            <div class="speacial-lesson">
+                <img src="{% static 'assets/img/portfolio/portfolio-1.jpg'%}" alt="" class="speacial-lesson-img">
+                <div class="speacial-lesson-info">
+                            <h3 class="name">{{vocabulary.title|slice:":15"}} -{{vocabulary.title_arabic|slice:":15"}} </h3>
+                            <h5 class="category">vocabularies</h5>
+                        </div>
+
+            </div>
+            {% endfor %}
+            <a href="/speaking/?section=vocabulary" class="see-more">
+                <span>See more</span><i class="">›</i>
+            </a>
+        </div>
+        
+        
+        
+        <div class="speacial-content " id="stories">
+            {% for story in stories|slice:":10" %}
+            <div class="speacial-lesson">
+                <img src="{{story.ImageURL}}" alt="" class="speacial-lesson-img">
+                        <div class="speacial-lesson-info">
+                            <h3 class="name">{{story.title|slice:":15"}}-{{story.title_arabic|slice:":15"}}</h3>
+                            <h5 class="category">stories</h5>
+                        </div>
+
+            </div>
+            {% endfor %}
+            <a href="/speaking/?section=stories" class="see-more">
+                <span>See more</span><i class="">›</i>
+            </a>
+        </div>
+        
+    </section>
+    
+    <section id="contact-us" class="contact-s">
+        <div class="hero-des">
+            <h3 class="mini-text">contact </h3>
+            <hr  class="line-break">
+            
+            <h3 style="color:rgba(0,0,0,.855);" class="h-text ">contact us </h3>
+    </div>
+        
+        <div class="contact-des">
+            <p class="des-contact">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, ex omnis iste! Nisi libero quod quo quis repellat
+            </p>
+        </div>
+        
+        <form action="" method="post" class="contact-form">
+            {% csrf_token %}
+            <input name="name" type="text" placeholder="your Name" required="" class="form-input">
+            <input name="email " type="email" placeholder="your Email" required="" class="form-input">
+            <input name="subject" type="text" placeholder="your Subject" required="" class="form-input">
+            <textarea name="body" id="" rows="4" placeholder="your message" required="" class="form-input" cols="8"></textarea>
+            <button class="send-btn">send</button>
+        </form>
+        
+    </section>
+
+{% endblock %}
+{% block script%}
+<script type="text/javascript" charset="utf-8">
+const swiper = new Swiper('.swiper',{
+	slidesPerView:1,
+	spaceBetween:0,
+	navigation:{
+		nextEl:'.swiper-button-next',
+		prevEl:'.swiper-button-prev'
+		},
+		
+		pagination:{
+			el:'.swiper-pagination'
+		}
+	
+});
+
+let imageContainer = document.querySelector('.image-container');
+    setInterval(() => {
+        let firstBox = imageContainer.firstElementChild;
+        firstBox.remove();
+        imageContainer.appendChild(firstBox);
+    }, 3000);
+
+
+function Curent(btn) {
+  var items = document.getElementsByClassName('speacial-btn');
+  var conversationsBtn = document.getElementById('conversationsBtn');
+  conversationsBtn.classList.remove('curent')
+  for (var i = 0; i < items.length; i++) {
+    if (items[i] === btn) {
+      items[i].classList.add('curent');
+      
+    } else {
+      items[i].classList.remove('curent');
+    }
+  }
+}
+const conversationsBtn = document.getElementById('conversationsBtn');
+const shoesBtnvocabulariesBtn = document.getElementById('vocabulariesBtn');
+const storiesBtn = document.getElementById('storiesBtn');
+const conversations = document.getElementById('conversations');
+const vocabularies = document.getElementById('vocabularies');
+const stories = document.getElementById('stories');
+
+
+conversationsBtn.addEventListener('click', () => {
+  conversations.classList.add('active')
+  stories.classList.remove('active')
+  vocabularies.classList.remove('active')
+});
+
+storiesBtn.addEventListener('click', () => {
+  stories.classList.add('active')
+  conversations.classList.remove('active')
+  vocabularies.classList.remove('active')
+});
+
+vocabulariesBtn.addEventListener('click', () => {
+  vocabularies.classList.add('active')
+  conversations.classList.remove('active')
+  stories.classList.remove('active')
+});
+
+function _0p3nc4rd(c4rd) {
+  var c4rd5 = document.getElementsByClassName('card-feature');
+  var o = document.getElementById('o');
+  o.classList.add('h')
+  o.classList.remove('curent')
+  for (var i = 0; i < c4rd5.length; i++) {
+    if (c4rd5[i] === c4rd) {
+      c4rd5[i].classList.add('selected-card');
+    } else {
+      c4rd5[i].classList.remove('selected-card');
+    }
+  }
+}
+urll = {% url 'search' %}
+tt= document.getElementById('search');
+tt.addEventListener('click', () => {
+    window.open(urll)
+})
+
+
+</script>
+{% endblock %}

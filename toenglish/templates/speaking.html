@@ -1,0 +1,128 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block content%}
+
+
+    <section class="speaking">
+        
+        <div class="controll">
+            <button class="btn btn-outline-dark sec-info  " id="conversations-btn">conversations</button>
+            <button class="btn btn-outline-dark sec-info  " id="vocabulary-btn">vocabulary</button>
+            <button class="btn btn-outline-dark sec-info  " id="stories-btn">stories</button>
+        </div>
+        <div class="conversations" id="conversations">
+            <h2 class="sec-info"> conversations</h2>
+            <div class="conversations-container">
+                {% for conversation in conversations %}
+                <a href="{% url 'conversation' conversation.id %}" class="link">
+            <div class="conversation">
+                
+                <img src="{{conversation.ImageURL}}" alt="icon" class="conv-img">
+                <h3 class="conv-name">{{conversation.title}}</h3>
+                
+                <span class="number">26</span>
+            </div>
+             </a>
+            {% endfor %}
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="addIcon" id="addIconC">
+                <i class="bi bi-plus">
+                    
+                </i>
+            </div>
+            <div id="add-new-c" class="add-new-c">
+                <i id="closeIconC" class="bi bi-x"></i>
+                <form action="create_conversations/" class="form" method="post">
+                    {% csrf_token %} 
+                    <input name="conversationEn" type="text" placeholder="your conversation's name in english" class="form-input">
+                    <input name="conversationAr" type="text" placeholder="your conversation's name in arabic" class="form-input">
+                    <input name="image" type="file"  class="form-input">
+                    <button class="send-btn">add</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div  class="vocabulary" id="vocabulary">
+            <h2 class="sec-info"> vocabulary</h2>
+            <div class="vocabulary-container">
+                {% for vocabulary in vocabularies %}
+            <a href="{% url 'vocabulary' vocabulary.id %}" class="link">
+            
+                <div class="vocabulary-content">
+                    <h3 class="voca-field">Bank</h3>
+                </div>
+                 </a>
+            {% endfor %}
+                
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="addIcon" id="addIconV">
+                <i class="bi bi-plus">
+                    
+                </i>
+            </div>
+
+            <div id="add-new-v" class="add-new-c">
+                <i id="closeIconV" class="bi bi-x"></i>
+                <form action="" class="form" method="post">
+                    {% csrf_token %} 
+                    <input name="vocabularyEn" type="text" placeholder="your vocabulary in english" class="form-input">
+                    <input name="vocabularyAr" type="text" placeholder="your vocabulary in arabic" class="form-input">
+                    <button class="send-btn">add</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="stories" id="stories">
+            <h2 class="sec-info"> short stories-قصص قصيرة</h2>
+            <div class="stories-container">
+                {% for story in stories %}
+            <a href="{% url 'story' story.id %}" class="link">
+                <div class="story-content">
+                    <img src="{{story.ImageURL}}" alt="" class="story-icon">
+                    <h3 class="story-name english">{{story.title}} </h3>
+                    <h3 class="story-name arabic">{{story.title_arabic}} </h3>
+                    
+                </div>
+                </a>
+            {% endfor %}
+                
+                
+                
+          </div>
+            {% if request.user.is_authenticated %}
+            <div class="addIcon" id="addIconS">
+                <i class="bi bi-plus">
+                    
+                </i>
+            </div>
+
+            <div id="add-new-s" class="add-new-c">
+                <i id="closeIconS" class="bi bi-x"></i>
+                <form action="create_story/" class="form" method="post" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    <input name="storyNEn" type="text" placeholder="your story's name  in english" class="form-input">
+                    <input name="storyNAr" type="text" placeholder="your story's name  in arabic" class="form-input">
+                    <input name="storyEn" type="text" placeholder="your story  in english" class="form-input">
+                    <input name="storyAr" type="text" placeholder="your story  in arabic" class="form-input">
+                    <input name="image" type="file" class="form-input">
+                    <input name="song" type="file" class="form-input">
+                    <button class="send-btn">add</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        
+    </section>
+    
+    
+{% endblock %}
+
+{% block script%}
+        <script src="{% static 'js/script2.js'%}" type="text/javascript" charset="utf-8"></script>
+{% endblock %}

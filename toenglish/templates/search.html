@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block content%}
+
+    <div class="search-page">
+        <div class="search-c">
+        <form method="get" action="" class="form">
+            <input name="search" type="search" placeholder="your Name" required="" placeholder="what are looking for" class="form-input">
+            
+        </form>
+        </div>
+        {% for item in searched_list %}
+        <div class="searched-items">
+            <a href="{{item.get_absolute_url}}" class="searched-item">
+                {% if item.model in ml %}
+                <h3 class="searched-content">{{item.title }}-{{item.title_arabic }}</h3>
+                {% else %}
+                <h3 class="searched-content">{{item.sentence_english }}-{{item.sentence_arabic }}</h3>
+                {% endif %}
+                <h5 class="searched-category">{{item.model}}</h5>
+            </a>
+
+        </div>
+        {% endfor %}
+    </div>
+
+   
+{% endblock %}
+
+{% block script%}
+        <script type="text/javascript" charset="utf-8">
+            
+        </script>
+{% endblock %}

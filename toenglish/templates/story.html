@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+    <div style="background: url("{{story.ImageURL}}") no-repeat center;" class="story-detail">
+        <div class="story-h">
+        <h2 class="story-title">{{story.title}}-{{story.title_arabic}}</h2>
+        <img src="{% static 'img/speaker_blue.png'%}" alt="" class="play-icon listen" id="play-icon">
+        </div>
+        <div class="story-content2">
+            <p style="color:898A88" class="story-text english">{{story.story_english}}</p>
+            <p style="color:898A88" class="story-text arabic">{{story.story_arabic}}</p>
+    </div>
+    </div>
+    
+
+{% endblock %}
+
+{% block script%}
+    <script type="text/javascript" charset="utf-8">
+        
+        var audio = new Audio('{{story.SongURL}}');
+        var isPlaying = false;
+        
+        function playSound() {
+          if (isPlaying) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+          
+          audio.play();
+          isPlaying = true;
+        }
+        
+        document.getElementById('play-icon').addEventListener('click', playSound);
+    </script>
+
+{% endblock %}

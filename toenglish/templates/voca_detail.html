@@ -1,0 +1,94 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content%}
+
+
+<div class="conversation-detail">
+        <h2 class="conversation-title">{{conv.title}}  </h2>
+        
+        <div class="conversation-content">
+            {% for conversation in conversations%}
+            <div class="con-info">
+                <div class="contr-btns" >
+                    <a href="{% url 'conversation' conv.id conversation.id %}">
+                    <i class="bi bi-pen" id="edit-btn"></i>
+                    </a>
+                    <a href="{% url 'delete_v' conv.id conversation.id %}">
+                    <i style="color:red" id="remove-btn" class="bi bi-trash"></i>
+                 </a>
+                </div>
+                <div class="conversation-sentences">
+                <h3 class="sentence english">{{conversation.sentence_english}}</h3>
+                <div class="play">
+                    <img data-audio='{{conversation.SongURL}} ' src="{% static 'img/speaker_blue.png' %}" alt="" class="play-icon">
+                    <img data-audioText='at the bank' src="img/recording.png" alt="" class="play-icon">
+                    
+                </div>
+                <h3 class="sentence arabic">{{conversation.sentence_arabic}}  </h3>
+            </div>
+
+            </div>
+            {% endfor %}
+            
+           
+            
+        </div>
+        {% if request.user.is_authenticated %}
+        <div class="addIcon" id="addIconC">
+                <i class="bi bi-plus">
+                    
+                </i>
+            </div>
+        <div id="add-new-c" class="add-new-c">
+                <i id="closeIconC" class="bi bi-x"></i>
+                <form action="" method="post" class="form" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    <input name="sentence_en" value="{{convDet.sentence_english}}" type="text" placeholder="your sentence in english" class="form-input">
+                    <input name="sentence_ar" value="{{convDet.sentence_arabic}}" type="text" placeholder="your  sentence in arabic" class="form-input">
+                    <input name="song" type="file"  class="form-input">
+                    <button class="send-btn">add</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+    
+    
+
+{% endblock %}
+
+{% block script%}
+    <script type="text/javascript" charset="utf-8">
+        
+var playbtns = document.getElementsByClassName('play-icon');
+for (var i = 0; i < playbtns.length; i++) {
+  playbtns[i].addEventListener('click', function() {
+    var soundUrl = this.dataset.audio;
+    var audio = new Audio(soundUrl);
+    var isPlaying = false;
+
+    function playSound() {
+      if (isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
+      audio.play();
+      isPlaying = true;
+    }
+
+    playSound();
+  });
+}
+
+addNewC = document.getElementById('add-new-c')
+addIconC = document.getElementById('addIconC')
+closeIconC = document.getElementById('closeIconC')
+addIconC.addEventListener('click',()=>{
+    addNewC.style.display='flex'
+})
+closeIconC.addEventListener('click',()=>{
+    addNewC.style.display='none'
+})
+    </script>
+{% endblock %}

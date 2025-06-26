@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="blog-detail">
+        <h2 class="blog-title">{{blog.title}}-{{blog.title_arabic}}</h2>
+        <p class="introduction">
+            {{blog.intro}}
+        </p>
+        <div class="blog-content">
+            {% for item in items %}
+            {% if item.name == 'article' %}
+            <div class="blog-content-text">
+                <h3 class="subtitle">{{ item.title }}</h3>
+                <p class="content-text-p">
+                    {{ item.content_text }}                </p>
+            </div>
+            {% elif item.name == 'image_article' %}
+            <div class="blog-content-img">
+                <p class="content-img-p">
+                    {{ item.title }}
+                </p>
+                <img src="{{ item.ImageURL }}" alt="" class="content-img">
+            </div>
+              {% endif %}
+                {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+{% block script%}
+<script type="text/javascript" charset="utf-8">
+    
+</script>
+
+{% endblock %}

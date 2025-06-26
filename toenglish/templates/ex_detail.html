@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="conversation-detail">
+        <h2 class="conversation-title">{{page}} </h2>
+        
+        <div class="conversation-content">
+            {% for conversation in conversations%}
+            <div class="con-info">
+                <div class="conversation-sentences">
+                <h3 class="sentence english">{{conversation.sentence_english}}</h3>
+                <div class="play">
+                    <img data-audio='{{conversation.SongURL}} ' src="{% static 'img/speaker_blue.png' %}" alt="" class="play-icon">
+                    <img data-audioText='at the bank' src="img/recording.png" alt="" class="play-icon">
+                    
+                </div>
+                <h3 class="sentence arabic">{{conversation.sentence_arabic}}  </h3>
+            </div>
+
+            </div>
+            {% endfor %}
+            
+           
+            
+        </div>
+        
+    </div>
+
+    
+
+{% endblock %}
+
+{% block script%}
+    <script type="text/javascript" charset="utf-8">
+        
+var playbtns = document.getElementsByClassName('play-icon');
+for (var i = 0; i < playbtns.length; i++) {
+  playbtns[i].addEventListener('click', function() {
+    var soundUrl = this.dataset.audio;
+    var audio = new Audio(soundUrl);
+    var isPlaying = false;
+
+    function playSound() {
+      if (isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
+      audio.play();
+      isPlaying = true;
+    }
+
+    playSound();
+  });
+}
+
+    </script>
+
+{% endblock %}

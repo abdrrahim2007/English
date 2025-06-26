@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" type="text/css" media="all" />
+     <style type="text/css" media="all">
+         .story-detail{
+
+        	background: url("{{story.ImageURL}}") no-repeat center;
+
+                    }
+     </style>
+    <title>story</title>
+</head>
+<body>
+    <div class="story-detail">
+        <div class="story-h">
+        <h2 class="story-title">{{story.title}}-{{story.title_arabic}}</h2>
+        <img src="{% static 'img/speaker_blue.png'%}" alt="" class="play-icon listen" id="play-icon">
+        </div>
+        <div class="story-content2">
+            <p style="color:898A88" class="story-text english">{{story.story_english}}</p>
+            <p style="color:898A88" class="story-text arabic">{{story.story_arabic}}  </p>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        
+        var audio = new Audio("{{story.SongURL}}");
+        var isPlaying = false;
+        
+        function playSound() {
+          if (isPlaying) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+          
+          audio.play();
+          isPlaying = true;
+        }
+        
+        document.getElementById('play-icon').addEventListener('click', playSound);
+    </script>
+</body>
+</html>

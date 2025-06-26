@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" type="text/css" media="all" />
+ 
+    <title>conversation</title>
+</head>
+<body>
+    
+    <div class="conversation-detail">
+        <h2 class="conversation-title">{{conv.title}}  </h2>
+        {% for conversation in conversations%}
+        
+        <div class="conversation-content">
+            <a href="{% url 'conversation' conv.id conversation.id %}">
+        <button class="btn-outline-success edit-btn"  >edit</button>
+        </a>
+        
+        <button class="btn-outline-danger delete-btn"  ><a href="{% url 'delete' conv.id conversation.id %}">delete </a></button>
+        
+            <div class="conversation-sentences">
+                <h3 class="sentence english">{{conversation.sentence_english}}</h3>
+                <div class="play">
+                    <img data-audio={{conversation.SongURL}} src="{% static 'img/speaker_blue.png' %}" alt="" class="play-icon">
+                    
+                </div>
+                <h3 class="sentence arabic">{{conversation.sentence_arabic}} </h3>
+            </div>
+            
+            </div>
+        {% endfor %}
+    </div>
+    
+    
+    <form action="" method="post" class="form-v" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="sentence_en" value="{{convDet.sentence_english}}" class="fo-input" placeholder="sentence in english">
+        <input type="text" name="sentence_ar" value="{{convDet.sentence_arabic}}" class="fo-input" placeholder="sentence in arabic">
+        <input type="file" value="{{convDet.song}}" name="song" class="fo-input">
+        <button class="send-btn" type="submit">add</button>
+    </form>
+    <script type="text/javascript" charset="utf-8">
+var playbtns = document.getElementsByClassName('play-icon');
+for (var i = 0; i < playbtns.length; i++) {
+  playbtns[i].addEventListener('click', function() {
+    var soundUrl = this.dataset.audio;
+    var audio = new Audio(soundUrl);
+    var isPlaying = false;
+
+    function playSound() {
+      if (isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
+
+      audio.play();
+      isPlaying = true;
+    }
+
+    playSound();
+  });
+}
+
+
+
+
+    </script>
+</body>
+</html>

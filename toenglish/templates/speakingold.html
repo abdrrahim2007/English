@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" type="text/css" media="all" />
+    <title>many conversations</title>
+</head>
+<body>
+    <section class="speaking">
+        
+        <div class="controll">
+            <button class="btn btn-outline-dark sec-info  " id="conversations-btn">conversations</button>
+            <button class="btn btn-outline-dark sec-info  " id="vocabulary-btn">vocabulary</button>
+            <button class="btn btn-outline-dark sec-info  " id="stories-btn">stories</button>
+        </div>
+        <div class="conversations" id="conversations">
+            <h2 class="sec-info"> Conversations</h2>
+            <div class="conversations-container">
+            {% for conversation in conversations %}
+            <a href="{% url 'conversation' conversation.id %}" class="link">
+            <div class="conversation">
+                
+                <img src="{{conversation.ImageURL}}" alt="icon" class="conv-img">
+                <h3 class="conv-name">{{conversation.title}}</h3>
+                
+                <span class="number">26</span>
+            </div>
+            </a>
+            {% endfor %}
+            </div>
+        </div>
+        <div  class="vocabulary" id="vocabulary">
+            <h2 class="sec-info"> vocabulary</h2>
+            <div class="vocabulary-container">
+            {% for vocabulary in vocabularies %}
+            <a href="{% url 'vocabulary' vocabulary.id %}" class="link">
+                <div class="vocabulary-content">
+                    <h3 class="voca-field">{{vocabulary.title}}</h3>
+                </div>
+            </a>
+            {% endfor %}
+            </div>
+            
+            
+        </div>
+        <div class="stories" id="stories">
+            <h2 class="sec-info"> short stories-قصص قصيرة</h2>
+            <div class="stories-container">
+            {% for story in stories %}
+            <a href="{% url 'story' story.id %}" class="link">
+                <div class="story-content">
+                    <img src="{{story.ImageURL}}" alt="" class="story-icon">
+                    <h3 class="story-name english">{{story.title}}</h3>
+                    <h3 class="story-name arabic"> {{story.title_arabic}} </h3>
+            </a>
+            {% endfor %}
+                </div>
+                
+                
+                
+          </div>
+            
+            
+        </div>
+        
+    </section>
+    
+        <script src="{% static 'js/script2.js'%}" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>
