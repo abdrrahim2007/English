@@ -29,7 +29,6 @@ A comprehensive web application for English language learning with interactive e
 ### Prerequisites
 
 - Python 3.8+
-- Node.js 14+ (for frontend assets)
 - Git
 
 ### Installation
@@ -45,12 +44,6 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Set up frontend dependencies
-npm install  # If using frontend assets
-
-# Configure environment (copy and edit sample)
-cp .env.sample .env
 
 # Run migrations
 python manage.py migrate
